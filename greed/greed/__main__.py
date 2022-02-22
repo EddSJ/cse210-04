@@ -75,7 +75,7 @@ def main():
         rock.set_font_size(FONT_SIZE)
         rock.set_color(color)
         rock.set_position(position)
-        cast.add_actor("rock", rock)
+        cast.add_actor("rocks", rock)
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)

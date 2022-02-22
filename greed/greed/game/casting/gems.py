@@ -13,7 +13,7 @@ class Gem(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._points = 100
+        self._points = 0
 
     def add_points(self):
         """
