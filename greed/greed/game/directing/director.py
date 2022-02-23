@@ -58,7 +58,7 @@ class Director:
 
         for artifact in artifacts:
             position = artifact.get_position()
-            position._y = (position._y + 12) % max_y
+            position._y = (position._y + 15) % max_y
 
             if robot.get_position().equals(artifact.get_position()):
                 artifact.update_score(banner)
