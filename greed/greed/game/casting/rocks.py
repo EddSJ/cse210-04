@@ -25,4 +25,5 @@ class Rock(Actor):
         Return:
             points: subracted points
         """
-        return self._points - 100
+        self._points -= 100
+        return self._points

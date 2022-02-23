@@ -25,4 +25,5 @@ class Gem(Actor):
         Return:
             points: added points
         """
-        return self._points + 100
+        self._points += 100
+        return self._points
