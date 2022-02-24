@@ -1,5 +1,11 @@
-# Robot Finds Kitten
-Simon Carless once described robotfindskitten as "less a game and more a way of life ... It's fun to wander around until you find a kitten, at which point you feel happy and can start again". I don't think I could have said it better myself!
+# Greed
+This is a game where you choose when you are done. Collect as many
+gems (*) as possible to earn points. Watch out for rocks (o),
+they will take points away.
+
+## Rules
+---
+Gems (*) and rocks (o) will randomly fall from the top of the screen. You, the player (#), can move left or right along the bottom of the screen. If you 'catch' a gem, you earn points. If, however, you 'catch' a rock, you lose points. The game will continue until you close the window.
 
 ## Getting Started
 ---
@@ -11,16 +17,15 @@ After you've installed the required libraries, open a terminal and browse to the
 
 python3 rfk 
 ```
-You can also run the program from an IDE like Visual Studio Code. Start your IDE and open the 
-project folder. Select the main module inside the hunter folder and click the "run" icon.
+You can also run the program (after following the installation instructions above) from an IDE like Visual Studio Code. Start your IDE and open the project folder. Select the main module inside the hunter folder and click the "run" icon.
+```
 
 ## Project Structure
 ---
 The project files and folders are organized as follows:
 ```
 root                    (project root folder)
-+-- rfk                 (source code for game)
-  +-- data              (data files for game)
++-- greed                 (source code for game)
   +-- game              (specific game classes)
   +-- __main__.py       (entry point for program)
 +-- README.md           (general info)
@@ -33,4 +38,6 @@ root                    (project root folder)
 
 ## Authors
 ---
-* # TODO: Add your name and email here
+* Eduardo Sanchez: san21086@byui.edu
+* Naif Amoodi: amo21004@byui.edu
+* Shauntal Byrne: byr21002@byui.edu
