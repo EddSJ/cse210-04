@@ -4,6 +4,7 @@ from game.casting.actor import Actor
 from game.casting.gems import Gem
 from game.casting.rocks import Rock
 from game.casting.cast import Cast
+from game.casting.score import Score
 
 from game.directing.director import Director
 
@@ -12,7 +13,6 @@ from game.services.video_service import VideoService
 
 from game.shared.color import Color
 from game.shared.point import Point
-
 
 FRAME_RATE = 12
 MAX_X = 900
@@ -25,15 +25,15 @@ CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
 
+# This is the starting score
+STARTING_SCORE = 500
 
 def main():
-    
     # create the cast
     cast = Cast()
     
     # create the banner
-    banner = Actor()
-    banner.set_text("Score:")
+    banner = Score(STARTING_SCORE)
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -41,9 +41,8 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 2)
+    y = int(MAX_Y - CELL_SIZE)
     position = Point(x, y)
-
     robot = Actor()
     robot.set_text("#")
     robot.set_font_size(FONT_SIZE)
@@ -63,20 +62,19 @@ def main():
         b = random.randint(0, 255)
         color = Color(r, g, b)
         
-        gem = Gem()
-        gem.set_text("*")
-        gem.set_font_size(FONT_SIZE)
-        gem.set_color(color)
-        gem.set_position(position)
-        cast.add_actor("gems", gem)
+        # randomly select this to be either a gem or a rock
+        if random.randint(1, 2) == 1:
+            artifact = Gem()
+            artifact.set_text("*")
+        else:
+            artifact = Rock()
+            artifact.set_text("o")
 
-        rock = Rock()
-        rock.set_text("o")
-        rock.set_font_size(FONT_SIZE)
-        rock.set_color(color)
-        rock.set_position(position)
-        cast.add_actor("rocks", rock)
-    
+        artifact.set_font_size(FONT_SIZE)
+        artifact.set_color(color)
+        artifact.set_position(position)
+        cast.add_actor("artifacts", artifact)
+        
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
     video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)

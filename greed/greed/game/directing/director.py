@@ -2,7 +2,6 @@ class Director:
     """A person who directs the game. 
     
     The responsibility of a Director is to control the sequence of play.
-
     Attributes:
         _keyboard_service (KeyboardService): For getting directional input.
         _video_service (VideoService): For providing video output.
@@ -20,7 +19,6 @@ class Director:
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
-
         Args:
             cast (Cast): The cast of actors.
         """
@@ -39,7 +37,7 @@ class Director:
         """
         robot = cast.get_first_actor("robots")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        robot.set_velocity(velocity)
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -49,26 +47,23 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        gems = cast.get_actors("gems")
-        rocks = cast.get_actors("rocks")
+        artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("")
+        banner.display_score()
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        
-        for gem in gems:
-            if robot.get_position().equals(gem.get_position()):
-                score = gem.add_points()
-                banner.set_text(score) 
-                cast.remove_actor(gems, gem)
 
-        for rock in rocks:
-            if robot.get_position().equals(rock.get_position()):
-                score = rock.subract_points()
-                banner.set_text(score)
-                cast.remove_actor(rocks, rock)    
-        
+        for artifact in artifacts:
+            position = artifact.get_position()
+            position._y = (position._y + 15) % max_y
+
+            if robot.get_position().equals(artifact.get_position()):
+                artifact.update_score(banner)
+
+                banner.display_score()
+
+       
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         

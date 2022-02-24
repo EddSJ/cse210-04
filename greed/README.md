@@ -1,11 +1,11 @@
 # Greed
 This is a game where you choose when you are done. Collect as many
-gems (stars) as possible to earn points. Watch out for rocks (o),
+gems (*) as possible to earn points. Watch out for rocks (o),
 they will take points away.
 
 ## Rules
 ---
-Gems (stars) and rocks (o) will randomly fall from the top of the screen. You, the player (#), can move left or right along the bottom of the screen. If you 'catch' a gem, you earn points. If, however, you 'catch' a rock, you lose points. The game will continue until you close the window.
+Gems (*) and rocks (o) will randomly fall from the top of the screen. You, the player (#), can move left or right along the bottom of the screen. If you 'catch' a gem, you earn points. If, however, you 'catch' a rock, you lose points. The game will continue until you close the window.
 
 ## Getting Started
 ---

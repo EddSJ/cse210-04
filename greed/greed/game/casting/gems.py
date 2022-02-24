@@ -9,21 +9,16 @@ class Gem(Actor):
     points catching.
 
     Attributes:
-        _points (100): points earned by getting gems.
+        None
     """
     def __init__(self):
         super().__init__()
-        self._points = 0
 
-    def add_points(self):
+    def update_score(self, score):
         """
         Add 100 points everytime a gem (*) is caught by the user.
-
         Arg:
             (self): An instance of the Gem class.
-
-        Return:
-            points: added points
+            (score): Adds to the score
         """
-        self._points += 100
-        return self._points
+        score.add_points()
