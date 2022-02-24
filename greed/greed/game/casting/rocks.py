@@ -1,31 +1,24 @@
 from game.casting.actor import Actor
 
 
-class Artifact(Actor):
+class Rock(Actor):
     """
-    An item of cultural or historical interest. 
+    A rock (o) that the user will try to avoid. 
     
-    The responsibility of an Artifact is to provide a message about itself.
+    The responsibility of a Rock is to provide something for the user to try
+    to avoid and to loose points if caught.
 
     Attributes:
-        _message (string): A short description about the artifact.
+        None.
     """
     def __init__(self):
         super().__init__()
-        self._message = ""
         
-    def get_message(self):
-        """Gets the artifact's message.
-        
-        Returns:
-            string: The message.
+    def update_score(self, score):
         """
-        return self._message
-    
-    def set_message(self, message):
-        """Updates the message to the given one.
-        
-        Args:
-            message (string): The given message.
+        Subract 100 points everytime a rock (o) is caught by the user.
+        Arg:
+            (self): An instance of the Rock class.
+            (score): subtract from the score
         """
-        self._message = message
+        score.deduct_points()
