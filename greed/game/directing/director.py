@@ -1,3 +1,5 @@
+import random
+
 class Director:
     """A person who directs the game. 
     
@@ -61,9 +63,19 @@ class Director:
         robot.move_next(max_x, max_y)
 
         if self._counter == 5:
+
             for artifact in artifacts:
-                position = artifact.get_position()
-                position._y = (position._y + 15) % max_y
+                position_1 = random.randint(20, 40)
+                position_2 = random.randint(20, 40)
+                position_3 = random.randint(20, 40)
+                position_4 = random.randint(20, 40)
+                artifact.position = artifact.get_position()
+                artifact.position._y = (artifact.position._y + 15) % max_y
+                artifact.set_velocity(100)
+                artifact.position._x = (artifact.position._x + position_1 ) % max_x
+                artifact.position._x = (artifact.position._x + position_2 ) % max_x
+                artifact.position._x = (artifact.position._x - position_3 ) % max_x
+                artifact.position._x = (artifact.position._x - position_4 ) % max_x
 
                 if robot.get_position().equals(artifact.get_position()):
                     artifact.update_score(banner)
